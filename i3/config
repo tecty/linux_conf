@@ -183,8 +183,23 @@ bar {
 }
 
 # lock the screen
-
 bindsym Control+$mod+l exec gnome-screensaver-command -l
+
+# system ctl
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id ~/.config/i3/i3exit.sh  lock, mode "default"
+    bindsym e exec --no-startup-id ~/.config/i3/i3exit.sh  logout, mode "default"
+    bindsym s exec --no-startup-id ~/.config/i3/i3exit.sh  suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.config/i3/i3exit.sh  hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.config/i3/i3exit.sh  reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id ~/.config/i3/i3exit.sh  shutdown, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Pause mode "$mode_system"
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
