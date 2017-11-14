@@ -10,10 +10,10 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 curl -sLf https://spacevim.org/install.sh | bash
 
 # install the fonts
-sh depend_sh/font_install.sh
+sh depend_sh/font_install.sh > /dev/null
 
 # copy the config files
-sh depend_sh/cp_conf.sh
+sh depend_sh/cp_conf.sh > /dev/null
 
 
 

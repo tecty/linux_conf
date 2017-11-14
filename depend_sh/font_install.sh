@@ -1,3 +1,5 @@
+#!/bin/sh
+
 
 # install the powerline's fonts
 # clone
