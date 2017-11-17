@@ -1,19 +1,29 @@
 #!/bin/sh
 
-sudo apt update && sudo apt upgrade
-sudo apt install zsh tmux vim htop clang python3 git -y
+sudo apt update && sudo apt upgrade -y
+sudo apt install zsh tmux vim htop clang python3 curl wget unzip git -y
 
-# install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 
 # install space vim
 curl -sLf https://spacevim.org/install.sh | bash
 
+
+# remove the previous zsh install
+rm ~/.oh-my-zsh -rf
+
+# install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+
 # install the fonts
-sh depend_sh/font_install.sh > /dev/null
+sh depend_sh/font_install.sh
 
 # copy the config files
-sh depend_sh/cp_conf.sh > /dev/null
+sh depend_sh/cp_conf.sh
+
+# background install space vim
+vim < echo 0
 
 
 
