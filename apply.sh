@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# update the software's version
 sudo apt update && sudo apt upgrade -y
 sudo apt install zsh tmux vim htop clang python3 curl wget unzip git -y
 
@@ -23,7 +24,7 @@ sh depend_sh/font_install.sh
 sh depend_sh/cp_conf.sh
 
 # background install space vim
-vim < echo 0
+# vim < echo 0
 
 
 

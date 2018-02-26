@@ -5,3 +5,6 @@ cp conf/tmux ~/.tmux.conf
 
 # copy the ohmyzsh's config
 cp conf/zsh ~/.zshrc
+
+# copy the custom ys theme
+cp conf/ys.zsh-theme ~/.oh-my-zsh/themes/
