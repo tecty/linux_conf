@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# acquire a file lock
+touch font.lock
 
 # install the powerline's fonts
 # clone
@@ -10,3 +12,6 @@ cd fonts
 # clean-up a bit
 cd ..
 rm -rf fonts
+
+# acquire a file lock
+rm font.lock

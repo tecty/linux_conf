@@ -15,8 +15,8 @@ fi
 echo "Checking and installing the system update"
 # Check the update
 sudo ${PKM} update -q && sudo ${PKM} upgrade -qy
-echo "Installing zsh tmux vim htop clang python3 curl wget unzip git"
-sudo ${PKM} install zsh tmux vim htop clang python3 curl wget unzip git -qy
+echo "Installing zsh tmux vim htop clang python3 virtualenv curl wget unzip git"
+sudo ${PKM} install zsh tmux vim htop clang python3 virtualenv curl wget unzip git -qy
 
 # check the ssh key and install
 ./input_sh/ssh_key.sh
@@ -24,25 +24,49 @@ sudo ${PKM} install zsh tmux vim htop clang python3 curl wget unzip git -qy
 # grep the user info about whether he is unsw student
 ./input_sh/unsw.sh
 
-
-# install space vim
-curl -sLf https://spacevim.org/install.sh | bash
-
-
 # remove the previous zsh install
 rm ~/.oh-my-zsh -rf
+
+echo " "
+echo "You need to give your password of this account"
+echo "And use Ctrl-d to give back the control to linux_conf"
+echo ""
+echo -n "Do you acknowledge that? "
+./input_sh/yes_or_no.sh
 
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-# install the fonts
-sh depend_sh/font_install.sh
+echo "Concurrent: Install Space Vim" ;
+sh depend_sh/space_vim.sh >/dev/null 2>/dev/null &
 
+echo "Concurrent: Install auto complete for zsh" ;
+sh depend_sh/zsh_auto_complete.sh >/dev/null 2>/dev/null &
+
+
+
+echo "Concurrent: Install autojump for zsh";
 # install the autojump
-sh depend_sh/auto_jump_install.sh
+sh depend_sh/auto_jump_install.sh  >/dev/null 2>/dev/null &
 
+# concurrently copy the conf
+echo "Concurrent: Copying config file";
 # copy the config files
-sh depend_sh/cp_conf.sh
+sh depend_sh/cp_conf.sh >/dev/null 2>/dev/null &
+
+echo "Concurrent: Install UTF-8 Support Font"
+# install the fonts
+sh depend_sh/font_install.sh >/dev/null 2>/dev/null &
+
+# sleep a second to wait for there has a lock
+sleep 1;
+# wait for all the lock is release
+while ! sh depend_sh/check_lock.sh; do
+  # wait for user to say yes
+done;
+
+echo ""
+echo "Use \"vim\" command to finish the space vim installation"
 
 # background install space vim
 # vim < echo 0

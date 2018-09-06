@@ -1,6 +1,0 @@
-alias cse="sftp z5141448@cse.unsw.edu.au"
-alias cseFtp="sftp z5141448@cse.unsw.edu.au"
-alias cse="sftp z5141448@cse.unsw.edu.au"
-alias cseFtp="sftp z5141448@cse.unsw.edu.au"
-alias cse="sftp z5141448@cse.unsw.edu.au"
-alias cseFtp="sftp z5141448@cse.unsw.edu.au"
