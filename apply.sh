@@ -32,8 +32,10 @@ echo "You need to give your password of this account"
 echo "And use Ctrl-d to give back the control to linux_conf"
 echo ""
 echo -n "Do you acknowledge that? "
-./input_sh/yes_or_no.sh
-
+while ! ./input_sh/yes_or_no.sh; do
+  # wait for user to say yes
+  echo -n "You must give back the control "
+done;
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
@@ -61,10 +63,9 @@ sh depend_sh/font_install.sh >/dev/null 2>/dev/null &
 # sleep a second to wait for there has a lock
 sleep 1;
 # wait for all the lock is release
-while ! sh depend_sh/check_lock.sh; do
-  # wait for user to say yes
-done;
+sh depend_sh/check_lock.sh
 
+echo "Installation is finished !"
 echo ""
 echo "Use \"vim\" command to finish the space vim installation"
 
