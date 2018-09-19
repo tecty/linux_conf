@@ -14,9 +14,11 @@ fi
 # update the software's version
 echo "Checking and installing the system update"
 # Check the update
-sudo ${PKM} update -q && sudo ${PKM} upgrade -qy
+sudo ${PKM} update -q && sudo ${PKM} upgrade -qy > /dev/null
 echo "Installing zsh tmux vim htop clang python3 virtualenv curl wget unzip git"
-sudo ${PKM} install zsh tmux vim htop clang python3 virtualenv curl wget unzip git -qy
+sudo ${PKM} install zsh tmux vim htop python3 curl wget unzip git -qy >/dev/null
+# use pip to install venv 
+pip3 install virtualenv > /dev/null
 
 # check the ssh key and install
 ./input_sh/ssh_key.sh
