@@ -16,7 +16,7 @@ echo "Checking and installing the system update"
 # Check the update
 sudo ${PKM} update -q && sudo ${PKM} upgrade -qy > /dev/null
 echo "Installing zsh tmux vim htop clang python3 virtualenv curl wget unzip git"
-sudo ${PKM} install zsh tmux vim htop python3 curl wget unzip git -qy >/dev/null
+sudo ${PKM} install zsh tmux vim htop python python3 curl wget unzip git -qy >/dev/null
 # use pip to install venv 
 pip3 install virtualenv > /dev/null
 
