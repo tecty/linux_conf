@@ -1,8 +1,13 @@
 #!/bin/sh
-if  lsb_release -i | egrep -qi "Fedora|CentOS|RHEL" ; then
+
+
+release=`cat /etc/os-release | grep "^ID=" | sed "s/^ID=//"`
+
+
+if  echo ${release} | egrep -qi "Fedora|CentOS|RHEL" ; then
   # package manager is set to dnf
   PKM="dnf";
-elif lsb_release -i | egrep -qi "Ubuntu|Mint|Debian"; then
+elif echo ${release}  | egrep -qi "Ubuntu|Mint|Debian"; then
   # package manager is set to apt
   PKM="apt";
 else
@@ -18,7 +23,7 @@ sudo ${PKM} update -q && sudo ${PKM} upgrade -qy > /dev/null
 echo "Installing zsh tmux vim htop clang python3 virtualenv curl wget unzip git"
 sudo ${PKM} install zsh tmux vim htop python python3 curl wget unzip git -qy >/dev/null
 # use pip to install venv 
-pip3 install virtualenv > /dev/null
+sudo pip3 install virtualenv > /dev/null
 
 # check the ssh key and install
 ./input_sh/ssh_key.sh
