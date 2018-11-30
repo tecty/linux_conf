@@ -96,4 +96,4 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cse="ssh z5141448@cse.unsw.edu.au"
-alias gpa="git add . && git commit && git push"
+alias gpa="git add . && gca && git push"
