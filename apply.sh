@@ -46,31 +46,9 @@ done;
 # install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-echo "Concurrent: Install Space Vim" ;
-sh depend_sh/space_vim.sh >/dev/null 2>/dev/null &
 
-echo "Concurrent: Install auto complete for zsh" ;
-sh depend_sh/zsh_auto_complete.sh >/dev/null 2>/dev/null &
-
-
-
-echo "Concurrent: Install autojump for zsh";
-# install the autojump
-sh depend_sh/auto_jump_install.sh  >/dev/null 2>/dev/null &
-
-# concurrently copy the conf
-echo "Concurrent: Copying config file";
-# copy the config files
-sh depend_sh/cp_conf.sh >/dev/null 2>/dev/null &
-
-echo "Concurrent: Install UTF-8 Support Font"
-# install the fonts
-sh depend_sh/font_install.sh >/dev/null 2>/dev/null &
-
-# sleep a second to wait for there has a lock
-sleep 1;
-# wait for all the lock is release
-sh depend_sh/check_lock.sh
+# install all the concurrent jobs 
+sh depend_sh/index.sh
 
 echo "Installation is finished !"
 echo ""

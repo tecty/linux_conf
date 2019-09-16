@@ -8,8 +8,9 @@ if ./input_sh/yes_or_no.sh ; then
   read zid;
 
   # append the cse alias
-  echo "alias cse=\"ssh ${zid}@cse.unsw.edu.au\"" >> conf/linux_conf.zsh
-  echo "alias cseFtp=\"sftp ${zid}@cse.unsw.edu.au\"" >> conf/linux_conf.zsh
+  echo "alias cse=\"ssh cse\"" >> conf/linux_conf.zsh
+  # refered to the new id 
+  sed  -i "s/ZID_PLACE_HOLDER/${zid}/g" conf/ssh 
 
   # promt the user to with some help info
   echo "You can access the cse with \"$ cse\" "\
