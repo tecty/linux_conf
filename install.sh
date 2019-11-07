@@ -29,6 +29,8 @@ ${PKM} zsh tmux vim htop python python3 curl wget unzip git
 sudo pip3 install virtualenv pylint > /dev/null
 
 # set zsh as defualt shell 
+echo " "
+echo "Set zsh as defualt shell"
 chsh -s `which zsh`
 
 # install all the concurrent jobs 
