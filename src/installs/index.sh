@@ -11,6 +11,8 @@ sh ${base}/font_install.sh >/dev/null 2>/dev/null &
 echo "Concurrent: Install zshrc conf"
 sh ${base}/zshrc.sh >/dev/null 2>/dev/null &
 
+sh ${base}/commonrc.sh
+
 
 while  ls *.lock >/dev/null 2>/dev/null; do
   # sleep till all the lock is release
