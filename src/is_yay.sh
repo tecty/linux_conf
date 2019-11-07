@@ -7,3 +7,5 @@ if ! ls /usr/bin/yay >/dev/null 2>/dev/null ; then
     makepkg -si
     cd .. 
     rm yay
+
+fi

@@ -1,6 +1,3 @@
-[submodule "zshrc"]
-	path = zshrc
-	url = git@github.com:tecty/zshrc.git
 [submodule "common-rc-files"]
 	path = common-rc-files
 	url = git@github.com:tecty/common-rc-files.git
