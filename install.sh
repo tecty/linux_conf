@@ -28,6 +28,9 @@ ${PKM} zsh tmux vim htop python python3 curl wget unzip git
 # use pip to install venv 
 sudo pip3 install virtualenv pylint > /dev/null
 
+# set zsh as defualt shell 
+chsh -s `which zsh`
+
 # install all the concurrent jobs 
 sh src/installs/index.sh
 
