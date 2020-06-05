@@ -1,5 +1,6 @@
 #!/bin/sh
-base=./src/installs
+
+base=`pwd`/src/installs
 
 echo "Concurrent: Install Space Vim" ;
 sh ${base}/space_vim.sh >/dev/null 2>/dev/null &
